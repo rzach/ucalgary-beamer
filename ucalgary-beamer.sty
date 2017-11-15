@@ -1,0 +1,130 @@
+\ProvidesPackage{ucalgary-beamer}[2017/11/09 University of Calgary beamer theme]
+
+
+
+\usepackage[latin1]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{arev,arevmath}
+\usefonttheme{serif}
+\include{svgnam.def}
+
+%\definecolor{uofcred}{cmyk}{0,.95,1,0}
+%\definecolor{uofcyellow}{cmyk}{0,.16,1,0}
+
+\definecolor{primary-red}{RGB}{227,33,35} % UCalgary primary red
+\definecolor{accent-green}{RGB}{181,190,53} % UCalgary accent green
+\definecolor{warm-grey}{RGB}{205,206,198} % UCalgary warm grey
+
+%\usetheme{Pittsburgh}
+\useoutertheme[subsection=false]{miniframes}
+
+%\setbeamertemplate{frametitle}[default][left]
+\setbeamertemplate{itemize subitems}[triangle]
+\setbeamertemplate{sections/subsections in toc}[square]
+\setbeamertemplate{itemize item}[square]
+\setbeamertemplate{itemize subitem}[triangle]
+
+\setbeamercolor{structure}{parent=palette quaternary,fg=primary-red}
+\setbeamercolor{section in toc}{fg=black,bg=white}
+\setbeamercolor{alerted text}{fg=primary-red}
+\setbeamercolor*{palette quaternary}{fg=white,bg=black}
+\setbeamercolor*{palette secondary}{fg=black,bg=warm-grey}
+\setbeamercolor*{palette tertiary}{bg=primary-red,fg=white}
+\setbeamercolor*{palette primary}{fg=white,bg=black}
+
+\setbeamercolor*{author in head/foot}{fg=white,bg=black}
+\setbeamercolor*{title in head/foot}{fg=white,bg=black}
+\setbeamercolor*{date in head/foot}{fg=white,bg=black}
+
+\setbeamercolor*{sidebar}{fg=primary-red,bg=warm-grey}
+\setbeamercolor*{palette sidebar primary}{fg=primary-red}
+\setbeamercolor*{palette sidebar secondary}{fg=white}
+\setbeamercolor*{palette sidebar tertiary}{fg=primary-red}
+\setbeamercolor*{palette sidebar quaternary}{fg=warm-grey}
+
+\setbeamercolor{titlelike}{parent=palette primary}
+\setbeamercolor{frametitle}{fg=white,bg=black}
+\setbeamercolor{frametitle right}{bg=warm-grey}
+
+\setbeamerfont{title}{series=\bfseries}
+\setbeamerfont{author}{series=\bfseries}
+\setbeamerfont{date}{shape=\itshape,size=\small}
+
+
+\defbeamertemplate*{title page}{ucalgary}[1][]
+{
+  \vbox{}
+  \begingroup
+      {\usebeamercolor[fg]{titlegraphic}\hfill\inserttitlegraphic\par}
+\vskip3em
+      \begin{beamercolorbox}[sep=8pt,left,#1]{title}
+      \usebeamerfont{title}\inserttitle\par%
+      \ifx\insertsubtitle\@empty%
+      \else%
+        \vskip0.25em%
+        {\usebeamerfont{subtitle}\usebeamercolor[fg]{subtitle}\insertsubtitle\pa
+r}%
+      \fi%     
+    \end{beamercolorbox}%
+   \vskip1em\par
+    \begin{beamercolorbox}[sep=8pt,left,#1]{author}
+      \usebeamerfont{author}\insertauthor
+    \end{beamercolorbox}
+    \begin{beamercolorbox}[sep=8pt,left,#1]{institute}
+      \usebeamerfont{institute}\insertinstitute
+    \end{beamercolorbox}
+    \begin{beamercolorbox}[sep=8pt,left,#1]{date}
+      \usebeamerfont{date}\insertdate
+    \end{beamercolorbox}
+  \endgroup
+}
+
+
+\defbeamertemplate*{footline}{infolines theme}
+{
+  \leavevmode%
+  \hbox{%
+  \begin{beamercolorbox}[wd=.333333\paperwidth,ht=2.25ex,dp=1ex,center]{author in head/foot}%
+    \usebeamerfont{author in head/foot}\insertshortauthor
+  \end{beamercolorbox}%
+  \begin{beamercolorbox}[wd=.333333\paperwidth,ht=2.25ex,dp=1ex,center]{title in head/foot}%
+    \usebeamerfont{title in head/foot}\insertshorttitle
+  \end{beamercolorbox}%
+  \begin{beamercolorbox}[wd=.333333\paperwidth,ht=2.25ex,dp=1ex,right]{date in head/foot}%
+    \usebeamerfont{date in head/foot}\insertshortdate{}\hspace*{2em}
+    \insertframenumber{} / \insertlastframenumber\hspace*{2ex} 
+  \end{beamercolorbox}}%
+  \vskip0pt%
+}
+
+
+
+\beamertemplatenavigationsymbolsempty
+\renewcommand{\beamertemplatetransparentcovereddynamic}{
+  \beamersetuncovermixins
+  {\opaqueness<1>{50}\opaqueness<2>{30}\opaqueness<3>{15}\opaqueness<4->{5}}%
+  {\opaqueness<1>{50}\opaqueness<2>{30}\opaqueness<3>{15}\opaqueness<4->{5}}}
+
+\beamertemplateroundedblocks 
+                                                                                
+\def\emph#1{\alert{#1}}
+
+\newcommand{\subsec}[2]{\frame{\frametitle{#1} #2}}
+\def\bit{\begin{itemize}}%[<+->]}
+\def\bits{\begin{itemize}}%[<+->]}
+\def\eit{\end{itemize}}
+\def\ben{\begin{enumerate}}%[<+->]}
+\def\een{\end{enumerate}}
+
+
+\setbeamerfont*{quote}{shape=\upshape}
+
+\colorlet{grey}{black!30}
+\colorlet{greengrey}{black!60!green!100}
+\def\dem#1{{\color{uofred!black!50} #1}}
+
+\providecommand{\insertlastframenumber}{?}
+\def\lastframe{\immediate\write\@auxout{\string\@writefile{nav}{\string\headcommand {\string\def \string\insertlastframenumber {\insertframenumber}}}}
+\global\let\beamer@writeslidentry\relax}
+
+\endinput
